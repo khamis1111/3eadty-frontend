@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+:root {
+    --bg-primary: #1f2122;
+    --bg-container: #27292a;
+    --main-color: #FF4242;
+}
+
+html,
+body,
+#root {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-family: "Tajawal", sans-serif !important;
+    font-weight: 600;
+    position: relative;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* overflow-x: hidden; */
+    background-color: var(--bg-primary);
+    /* height: 1000px; */
+}
+
+/*
+   Start Utility
+*/
+
+#container {
+    max-width: 1000px !important;
+    margin: auto !important;
+    padding: 0
+}
+
+@media (max-width: 1130px) {
+    #container {
+        margin: 0 20px !important;
+    }
+}
+
+p {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: #fff !important;
+}
+
+.second-bg {
+    background: var(--bg-primary) !important
+}
+
+.main-bg {
+    background: var(--bg-container) !important;
+    box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.1);
+}
+
+.color {
+    color: var(--main-color)
+}
+
+.text-effect {
+    /* filter: drop-shadow(0px 0px 10px rgb(255, 255, 255)); */
+    font-weight: 800;
+    animation: flickering 2s linear infinite both;
+}
+
+@keyframes flickering {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    41.99% {
+        opacity: 1;
+    }
+
+    42% {
+        opacity: 0;
+    }
+
+    43% {
+        opacity: 0;
+    }
+
+    43.01% {
+        opacity: 1;
+    }
+
+    47.99% {
+        opacity: 1;
+    }
+
+    48% {
+        opacity: 0;
+    }
+
+    49% {
+        opacity: 0;
+    }
+
+    49.01% {
+        opacity: 1;
+    }
+}
+
+.light-effect {
+    filter: drop-shadow(0px 0px 10px rgb(255, 255, 255));
+}
+
+.line {
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--main-color);
+}
+
+.tables {
+    width: 100%;
+}
+
+/* 
+End Utility
+*/
+
+/* Pagination */
+.page-link {
+    color: var(--bg-primary) !important;
+}
+
+.active {
+    --bs-pagination-active-bg: var(--main-color) !important;
+    --bs-pagination-active-border-color: var(--main-color) !important;
+}
+
+.page-link:focus {
+    --bs-pagination-focus-box-shadow: 0 0 8px 0.10rem var(--bg-container)
+}
+
+/* ScrollBar */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(245, 4, 4, 0);
+}
+
+::-webkit-scrollbar {
+    float: right;
+    width: 5px;
+    height: 5px;
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px #00000000;
+    background-color: var(--main-color);
+}
+
+::-moz-selection {
+    background: var(--main-color);
+    text-shadow: none;
+    color: var(--bg-primary);
+}
+
+::selection {
+    background: var(--main-color);
+    text-shadow: none;
+    color: #fff;
+}
+
+/* Pages */
+.pages {
+    position: relative;
+    top: 0;
+    right: 250px;
+    min-height: 100vh;
+    width: calc(100% - 250px);
+    padding: 20px 25px;
+    transition: all 0.5s ease;
+}
+
+
+/* Inputs style */
+.form-container {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.form-container button:active {
+    scale: 0.95;
+}
+
+.form-container .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.form-container .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #717171;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.form-container .form-group input,
+.form-container .form-group-select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    background-color: transparent;
+    border: 1px solid #414141;
+}
+
+option {
+    color: #717171 !important;
+    background-color: var(--bg-primary) !important;
+}
+
+.form-container .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    resize: none;
+    color: #fff;
+    height: 96px;
+    border: 1px solid #414141;
+    background-color: transparent;
+    font-family: inherit;
+}
+
+.form-container .form-group input::placeholder,
+.form-container .form-group-select::placeholder {
+    opacity: 0.5;
+}
+
+.form-container .form-group input:focus,
+.form-container .form-group-select:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+
+.form-container .form-group textarea:focus {
+    outline: none;
+    border-color: var(--main-color);
+}
+
+.form-container .form-submit-btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-self: flex-start;
+    font-family: inherit;
+    color: #717171;
+    font-weight: 600;
+    width: 40%;
+    background: #313131;
+    border: 1px solid #414141;
+    padding: 12px 16px;
+    font-size: inherit;
+    gap: 8px;
+    margin-top: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+    background-color: #fff;
+    border-color: #fff;
+}
+
+/* DropDown */
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--main-color) !important;
+}
+
+
+/* Resize Screen */
+
+@media (max-width: 1130px) {
+    .pages {
+        right: 80px !important;
+        width: calc(100% - 80px);
+    }
+}
+
+/* Filter All Users */
+@media (max-width: 760px) {
+    .filter {
+        gap: 10px !important;
+    }
+}
+
+/* Users Details */
+@media (max-width: 415px) {
+    .user-details {
+        width: 100% !important;
+    }
+
+    .more-details span {
+        display: inline-block;
+    }
+
+    .custum-file-upload {
+        width: auto;
+        height: auto;
+    }
+}
+
+/* Show img in tables */
+.image-gallery {
+    width: 70px !important;
+}
+
+.image-gallery-icon {
+    width: 100%;
+    height: 100%;
+}
+
+.image-gallery-fullscreen-button .image-gallery-svg,
+.image-gallery-play-button .image-gallery-svg {
+    display: none;
+}
+
+.image-gallery-slides {
+    border-radius: 10px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .image-gallery-icon:hover {
+        color: var(--main-color) !important;
+    }
+}

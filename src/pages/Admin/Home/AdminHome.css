@@ -1,0 +1,5 @@
+@media (max-width: 760px) {
+    .dashboard .home-card {
+        width: 100% !important;
+    }
+}

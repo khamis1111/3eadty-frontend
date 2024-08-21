@@ -1,0 +1,44 @@
+.sidebar {
+    /* border-left: 2px solid red; */
+    background-color: var(--bg-container);
+    text-align: center;
+    position: fixed;
+    inset: 0;
+    width: 250px;
+    height: 100vh;
+    transition: all 0.5s ease;
+    padding: 20px 14px;
+}
+
+.sidebar::after {
+    content: '';
+    width: 2px;
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    left: 0;
+    background: red;
+}
+
+.sidebar span {
+    display: none;
+}
+
+@media (max-width: 1130px) {
+    .sidebar {
+        width: 80px !important;
+    }
+
+    .sidebar span {
+        display: block;
+    }
+
+    .sidebar p {
+        display: none;
+    }
+}
+
+.item:hover {
+    scale: .9;
+    cursor: pointer;
+}
