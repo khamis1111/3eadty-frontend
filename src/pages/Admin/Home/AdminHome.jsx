@@ -50,7 +50,7 @@ const AdminHome = ({ allUser, allAppointment, loading }) => {
                                             <td>{index + 1}</td>
                                             <td>
                                                 {/* Return user => name === name in table */}
-                                                <Link to={`/userDetails/${allUser.data?.filter((user) => user.name === data.patientName)[0]?._id}`}>
+                                                <Link to={`/userDetails/${allUser.data && allUser.data?.filter((user) => user.name === data.patientName)[0]?._id}`}>
                                                     {data.patientName}
                                                 </Link>
                                             </td>
