@@ -36,7 +36,7 @@ const App = () => {
   const getAllAppointment = () => {
     setLoading(false)
 
-    GetData('/api/v1/appointment').then(res => {
+    GetData('/api/v1/appointment?sort=date').then(res => {
       setLoading(true)
       setAllAppointment(res.data)
     }).catch(err => {

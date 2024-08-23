@@ -23,7 +23,10 @@ const AllTreatmentsDetails = () => {
 
   const [process, setProcess] = useState()
   const [processDetails, setProcessDetails] = useState()
-  const [price, setPrice] = useState()
+  const [price, setPrice] = useState(0)
+  const [paid, setPaid] = useState(0)
+  const [priceChanged, setPriceChanged] = useState(false)
+  const [paidChanged, setPaidChanged] = useState(false)
   const [date, setDate] = useState()
 
   const GetUser = () => {
@@ -42,6 +45,12 @@ const AllTreatmentsDetails = () => {
     GetUser()
   }, [])
 
+  // useEffect(() => {
+  //   setPrice()
+  //   setPaid()
+  // }, [price, paid])
+
+
   const handleShowEdit = (detailsId) => {
     setShowEdit(true)
     setEditdId(detailsId)
@@ -49,7 +58,8 @@ const AllTreatmentsDetails = () => {
     const detailsData = user.data.treatmentsDetails.filter((user) => user._id === detailsId)
     setProcess(detailsData[0].process)
     setProcessDetails(detailsData[0].processDetails)
-    setPrice(detailsData[0].price)
+    setPrice(!priceChanged && detailsData[0].price)
+    setPaid(!paidChanged && detailsData[0].paid)
     setDate(detailsData[0].date)
   }
 
@@ -60,6 +70,7 @@ const AllTreatmentsDetails = () => {
       process,
       processDetails,
       price,
+      paid,
       date
     }).then(res => {
       notify('تمت الاضافة بنجاح', 'success')
@@ -67,7 +78,8 @@ const AllTreatmentsDetails = () => {
       setShowAdd(false)
       setProcess()
       setProcessDetails()
-      setPrice()
+      setPrice(0)
+      setPaid(0)
       setDate()
     }).catch(err => {
       console.log(err)
@@ -77,12 +89,14 @@ const AllTreatmentsDetails = () => {
 
   const handleEditDetails = (e) => {
     e.preventDefault()
+    // const detailsData = user.data.treatmentsDetails.filter((user) => user._id === detailsId)
 
     EditData(`/api/v1/treatments/details/${id}`, {
       docId: editdId,
       process,
       processDetails,
       price,
+      paid,
       date
     }).then(res => {
       notify('تم التعديل بنجاح', 'success')
@@ -90,7 +104,8 @@ const AllTreatmentsDetails = () => {
       setShowEdit(false)
       setProcess()
       setProcessDetails()
-      setPrice()
+      setPrice(0)
+      setPaid(0)
       setDate()
     }).catch(err => {
       console.log(err)
@@ -135,6 +150,8 @@ const AllTreatmentsDetails = () => {
                 <th>العملية</th>
                 <th>تفاصيل العملية</th>
                 <th>السعر</th>
+                <th>المدفوع</th>
+                <th>المتبقي</th>
                 <th>التاريخ</th>
                 <th>أخري...</th>
               </tr>
@@ -149,6 +166,8 @@ const AllTreatmentsDetails = () => {
                         <td>{data.process}</td>
                         <td>{data.processDetails}</td>
                         <td>{data.price}</td>
+                        <td>{data.paid}</td>
+                        <td>{data.restOfPrice}</td>
                         <td>{DateFormate(data.date)}</td>
                         <td className='d-flex flex-wrap justify-content-center gap-3'>
                           <Button variant='success' onClick={(e) => handleShowEdit(data._id)}>تعديل</Button>
@@ -156,8 +175,8 @@ const AllTreatmentsDetails = () => {
                         </td>
                       </tr>
                     ))
-                    : <tr><td colSpan={6} className='text-center fs-5 fw-bold'>لا يوجد أي تفاصيل</td></tr>
-                  : <tr><td colSpan={6} className='text-center fs-5 fw-bold'>تحميل التفاصيل...</td></tr>
+                    : <tr><td colSpan={8} className='text-center fs-5 fw-bold'>لا يوجد أي تفاصيل</td></tr>
+                  : <tr><td colSpan={8} className='text-center fs-5 fw-bold'>تحميل التفاصيل...</td></tr>
               }
             </tbody>
           </Table>
@@ -189,6 +208,14 @@ const AllTreatmentsDetails = () => {
                   </label>
                   <input required name="price" id="price" type="number" placeholder=' سعر العملية '
                     onChange={(e) => setPrice(e.target.value)}
+                  />
+                </Col>
+                <Col className="form-group">
+                  <label htmlFor="paid">
+                    المدفوع حاليا
+                  </label>
+                  <input required name="paid" id="paid" type="number" placeholder=' المدفوع حاليا '
+                    onChange={(e) => setPaid(e.target.value)}
                   />
                 </Col>
               </Row>
@@ -242,7 +269,23 @@ const AllTreatmentsDetails = () => {
                     سعر العملية
                   </label>
                   <input required name="price" id="price" type="number" placeholder=' سعر العملية '
-                    value={price} onChange={(e) => setPrice(e.target.value)}
+                    value={price}
+                    onChange={(e) => {
+                      setPrice(e.target.value)
+                      setPriceChanged(true)
+                    }}
+                  />
+                </Col>
+                <Col className="form-group">
+                  <label htmlFor="paid">
+                    المدفوع حاليا
+                  </label>
+                  <input required name="paid" id="paid" type="number" placeholder=' المدفوع حاليا '
+                    value={paid}
+                    onChange={(e) => {
+                      setPaid(e.target.value)
+                      setPaidChanged(true)
+                    }}
                   />
                 </Col>
               </Row>

@@ -139,6 +139,7 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
         </div>
       </div>
 
+
       {/* Add Medications */}
       {
         showAdd && (
@@ -151,13 +152,10 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
               <form className="form">
                 <Row>
                   <Col className="form-group">
-                    <label htmlFor="patientName">
-                      اسم المريض
-                    </label>
-                    <select className="form-group-select" id="patientName"
-                      onChange={(e) => setPatientName(e.target.value)}
-                    >
-                      <option hidden value='0'>أسماء المرضي</option>
+                    <label htmlFor="patientName">اسم المريض</label>
+                    <input list="patients" id="patientName" name="patientName" placeholder='اسم المريض' />
+
+                    <datalist id="patients">
                       {
                         loading ?
                           allUser.data && allUser.data.length > 0 ?
@@ -167,7 +165,7 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
                             : <option value='0' hidden selected className='text-center fw-bold'>لا يوجد أي مريض</option>
                           : <option value='0' hidden selected className='text-center fw-bold'>تحميل المرضي...</option>
                       }
-                    </select>
+                    </datalist>
                   </Col>
                   <Col className="form-group">
                     <label htmlFor="date">
