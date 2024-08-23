@@ -208,7 +208,7 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
               <form className="form">
                 <Row>
                   <Col className="form-group">
-                    <label htmlFor="patientName-e">
+                    {/* <label htmlFor="patientName-e">
                       اسم المريض
                     </label>
                     <select className="form-group-select" id="patientName-e" onChange={(e) => setPatientName(e.target.value)}>
@@ -222,7 +222,22 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
                             : <option value='0' hidden selected className='text-center fw-bold'>لا يوجد أي مريض</option>
                           : <option value='0' hidden selected className='text-center fw-bold'>تحميل المرضي...</option>
                       }
-                    </select>
+                    </select> */}
+
+                    <label htmlFor="patientName-e">اسم المريض</label>
+                    <input list="patients-e" id="patientName-e" name="patientName-e" placeholder='اسم المريض' />
+
+                    <datalist id="patients-e" onChange={(e) => setPatientName(e.target.value)}>
+                      {
+                        loading ?
+                          allUser.data && allUser.data.length > 0 ?
+                            allUser.data.map((data) => (
+                              <option selected={patientName === data.name} value={data.name} key={data._id}>{data.name}</option>
+                            ))
+                            : <option value='0' hidden selected className='text-center fw-bold'>لا يوجد أي مريض</option>
+                          : <option value='0' hidden selected className='text-center fw-bold'>تحميل المرضي...</option>
+                      }
+                    </datalist>
                   </Col>
 
                   <Col className="form-group">
