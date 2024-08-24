@@ -153,7 +153,9 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
                 <Row>
                   <Col className="form-group">
                     <label htmlFor="patientName">اسم المريض</label>
-                    <input list="patients" id="patientName" name="patientName" placeholder='اسم المريض' />
+                    <input list="patients" id="patientName" name="patientName" placeholder='اسم المريض'
+                      onChange={(e) => setPatientName(e.target.value)}
+                    />
 
                     <datalist id="patients">
                       {
@@ -225,9 +227,11 @@ const AllAppointment = ({ allUser, allAppointment, loading, getAllAppointment })
                     </select> */}
 
                     <label htmlFor="patientName-e">اسم المريض</label>
-                    <input list="patients-e" id="patientName-e" name="patientName-e" placeholder='اسم المريض' />
+                    <input list="patients-e" id="patientName-e" name="patientName-e" placeholder='اسم المريض'
+                      value={patientName} onChange={(e) => setPatientName(e.target.value)}
+                    />
 
-                    <datalist id="patients-e" onChange={(e) => setPatientName(e.target.value)}>
+                    <datalist id="patients-e">
                       {
                         loading ?
                           allUser.data && allUser.data.length > 0 ?
